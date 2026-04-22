@@ -1,0 +1,41 @@
+---
+import Base from '../layouts/Base.astro';
+import PostList from '../components/PostList.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+  .slice(0, 8);
+---
+<Base>
+  <section>
+    <h1>xuchunyang <span style="color:var(--muted);font-weight:normal">(徐春阳)</span></h1>
+    <p>
+      Web developer &amp; tinkerer。有 3–4 年 Web 开发经验和 1 年外贸工作经验，
+      目前在找 <strong>Web full-stack</strong> 或 <strong>运维</strong> 方向的工作。
+    </p>
+    <p>
+      业余喜欢折腾软硬件：Linux、Raspberry Pi、ESP 系列、3D 打印、IoT。
+      这里是我的自留地，用来记录折腾过程和写点技术笔记。
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="prompt">$</span> links</h2>
+    <ul class="post-list">
+      <li><time>github</time>  <a href="https://github.com/xuchunyang">github.com/xuchunyang</a></li>
+      <li><time>twitter</time> <a href="https://x.com/xuchunyang_">x.com/xuchunyang_</a></li>
+      <li><time>email</time>   <a href="mailto:xuchunyang56@gmail.com">xuchunyang56@gmail.com</a></li>
+      <li><time>rss</time>     <a href="/rss.xml">/rss.xml</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="prompt">$</span> recent posts</h2>
+    {posts.length === 0
+      ? <p style="color:var(--muted)">还没有文章。</p>
+      : <PostList posts={posts} />
+    }
+    <p style="margin-top:1rem"><a href="/blog">all posts →</a></p>
+  </section>
+</Base>

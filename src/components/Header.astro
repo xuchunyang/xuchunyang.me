@@ -1,0 +1,15 @@
+---
+const { pathname } = Astro.url;
+const isHome = pathname === '/' || pathname === '';
+---
+<header class="site">
+  <div class="brand">
+    {isHome ? <span>xuchunyang</span> : <a href="/">xuchunyang</a>}
+  </div>
+  <nav>
+    <a href="/">home</a>
+    <a href="/blog">blog</a>
+    <a href="/about">about</a>
+    <a href="/rss.xml">rss</a>
+  </nav>
+</header>
