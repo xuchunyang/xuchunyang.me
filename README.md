@@ -5,10 +5,10 @@
 ## 开发
 
 ```sh
-npm install
-npm run dev       # http://localhost:4321
-npm run build     # 产物在 dist/
-npm run preview
+pnpm install
+pnpm dev          # http://localhost:4321
+pnpm build        # 产物在 dist/
+pnpm preview
 ```
 
 ## 写博客
@@ -33,7 +33,7 @@ draft: false            # 可选，true 则不发布
 2. Cloudflare Dashboard → Workers & Pages → Create → Pages → Connect to Git → 选仓库。
 3. 构建设置：
    - Framework preset: **Astro**
-   - Build command: `npm run build`
+   - Build command: `pnpm build`
    - Build output directory: `dist`
    - 环境变量：`NODE_VERSION=20`
 4. 绑定自定义域名：Pages 项目 → Custom domains → 添加 `xuchunyang.me` 和 `www.xuchunyang.me`。
